@@ -1,5 +1,5 @@
 import "./globals.css";
-import { Space_Grotesk, IBM_Plex_Mono, Inter } from "next/font/google";
+import { Space_Grotesk, IBM_Plex_Mono, Inter, Unbounded } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Starfield from "@/components/Starfield";
@@ -7,6 +7,7 @@ import CometCursor from "@/components/CometCursor";
 import AlienObserver from "@/components/AlienObserver";
 
 const display = Space_Grotesk({ subsets: ["latin"], variable: "--font-display" });
+const hero = Unbounded({ subsets: ["latin"], weight: ["500", "600", "700"], variable: "--font-hero" });
 const mono = IBM_Plex_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-mono" });
 const body = Inter({ subsets: ["latin"] });
 
@@ -27,7 +28,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${display.variable} ${mono.variable}`}>
+    <html lang="en" className={`${display.variable} ${mono.variable} ${hero.variable}`}>
       <body className={`${body.className} bg-void text-starlight antialiased`}>
         <Starfield />
         <div className="nebula nebula-a" aria-hidden="true" />

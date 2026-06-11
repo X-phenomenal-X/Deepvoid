@@ -14,6 +14,7 @@ module.exports = {
       },
       fontFamily: {
         display: ["var(--font-display)", "sans-serif"],
+        hero: ["var(--font-hero)", "var(--font-display)", "sans-serif"],
         mono: ["var(--font-mono)", "monospace"]
       }
     }

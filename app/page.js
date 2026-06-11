@@ -3,6 +3,7 @@ import VoyagerTracker from "@/components/VoyagerTracker";
 import ApodCard from "@/components/ApodCard";
 import LaunchCountdown from "@/components/LaunchCountdown";
 import IssTracker from "@/components/IssTracker";
+import AsteroidWatch from "@/components/AsteroidWatch";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import AdSlot from "@/components/AdSlot";
 import ScaleSlider from "@/components/ScaleSlider";
@@ -19,7 +20,7 @@ export default function Home() {
       <Reveal>
         <section>
           <p className="font-mono text-xs uppercase tracking-[0.25em] text-telemetry">Mission telemetry</p>
-          <h2 className="mt-3 font-display text-3xl tracking-tight sm:text-4xl">Two machines from 1977, still calling home</h2>
+          <h2 className="mt-3 font-hero text-2xl font-medium leading-snug sm:text-3xl">Two machines from 1977, still calling home</h2>
           <p className="mt-2 max-w-2xl text-sm text-dim">
             Distances update ten times a second from each probe&apos;s real velocity. The signal
             you&apos;d send right now takes nearly a full day to arrive.
@@ -30,11 +31,13 @@ export default function Home() {
 
       <Reveal><IssTracker /></Reveal>
 
+      <Reveal><AsteroidWatch /></Reveal>
+
       {/* Scale of the Void — the interactive */}
       <Reveal>
         <section>
           <p className="font-mono text-xs uppercase tracking-[0.25em] text-telemetry">Scale of the void</p>
-          <h2 className="mt-3 font-display text-3xl tracking-tight sm:text-4xl">How far is far?</h2>
+          <h2 className="mt-3 font-hero text-2xl font-medium leading-snug sm:text-3xl">How far is far?</h2>
           <p className="mt-2 max-w-2xl text-sm text-dim">
             Drag from the Moon to the nearest star. The scale is logarithmic — it has to be,
             or Voyager wouldn&apos;t even leave the first pixel.

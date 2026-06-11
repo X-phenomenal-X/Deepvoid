@@ -6,6 +6,20 @@ import { PLANETS } from "@/lib/planets";
 const KM_AU = 149597870.7;
 const LIGHT_MIN_PER_AU = 8.317; // minutes for sunlight to travel 1 AU
 
+// Real photography (NASA / public domain, served via Wikimedia's stable
+// filename redirect). If one ever 404s, onError hides it gracefully.
+const FP = "https://commons.wikimedia.org/wiki/Special:FilePath/";
+const PHOTOS = {
+  Mercury: `${FP}Mercury%20in%20color%20-%20Prockter07-edit1.jpg?width=700`,
+  Venus: `${FP}Venus-real_color.jpg?width=700`,
+  Earth: `${FP}The_Earth_seen_from_Apollo_17.jpg?width=700`,
+  Mars: `${FP}OSIRIS_Mars_true_color.jpg?width=700`,
+  Jupiter: `${FP}Jupiter_and_its_shrunken_Great_Red_Spot.jpg?width=700`,
+  Saturn: `${FP}Saturn_during_Equinox.jpg?width=700`,
+  Uranus: `${FP}Uranus2.jpg?width=700`,
+  Neptune: `${FP}Neptune_Full.jpg?width=700`
+};
+
 function lightTime(au) {
   const mins = au * LIGHT_MIN_PER_AU;
   if (mins < 60) return `${mins.toFixed(0)} min`;
@@ -81,7 +95,8 @@ export default function PlanetExplorer() {
       </p>
 
       {/* profile */}
-      <div key={sel.name} className="planet-detail mt-6 border-t border-hairline pt-6">
+      <div key={sel.name} className="planet-detail mt-6 grid gap-6 border-t border-hairline pt-6 sm:grid-cols-[1fr_180px]">
+        <div className="sm:order-1">
         <div className="flex flex-wrap items-baseline justify-between gap-2">
           <h3 className="font-display text-2xl text-starlight">{sel.name}</h3>
           <span className="font-mono text-xs text-dim">
@@ -146,6 +161,24 @@ export default function PlanetExplorer() {
           <span className="font-mono text-[10px] uppercase tracking-widest text-signal">Cool fact · </span>
           {sel.fact}
         </p>
+        </div>
+
+        {/* real photograph */}
+        <div className="sm:order-2">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            key={sel.name}
+            src={PHOTOS[sel.name]}
+            alt={`${sel.name}, real photograph`}
+            loading="lazy"
+            onError={(e) => { e.currentTarget.parentElement.style.display = "none"; }}
+            className="aspect-square w-full rounded-full object-cover"
+            style={{ boxShadow: `0 0 40px ${sel.color}33, 0 0 0 1px ${sel.color}44` }}
+          />
+          <p className="mt-3 text-center font-mono text-[9px] uppercase tracking-widest text-dim/60">
+            Real photo · NASA
+          </p>
+        </div>
       </div>
     </div>
   );

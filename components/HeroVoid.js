@@ -33,7 +33,7 @@ export default function HeroVoid() {
         <p className="hero-in hero-in-1 flex items-center gap-2 font-mono text-xs uppercase tracking-[0.3em] text-telemetry">
           <span className="live-dot" /> Live · this is not an illustration
         </p>
-        <h1 className="hero-in hero-in-2 mt-4 max-w-3xl font-display text-5xl leading-[1.02] tracking-tight sm:text-7xl">
+        <h1 className="hero-in hero-in-2 mt-4 max-w-3xl font-hero text-4xl font-semibold leading-[1.08] sm:text-6xl">
           The deep void,
           <br />
           <span className="text-gradient">in real time.</span>
