@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import Starfield from "@/components/Starfield";
 import CometCursor from "@/components/CometCursor";
 import AlienObserver from "@/components/AlienObserver";
+import ScrollProgress from "@/components/ScrollProgress";
 
 const display = Space_Grotesk({ subsets: ["latin"], variable: "--font-display" });
 const hero = Unbounded({ subsets: ["latin"], weight: ["500", "600", "700"], variable: "--font-hero" });
@@ -43,6 +44,8 @@ export default function RootLayout({ children }) {
         <div className="nebula nebula-a" aria-hidden="true" />
         <div className="nebula nebula-b" aria-hidden="true" />
         <div className="nebula nebula-c" aria-hidden="true" />
+        <div className="grain" aria-hidden="true" />
+        <ScrollProgress />
         <CometCursor />
         <AlienObserver />
         <Navbar />

@@ -45,7 +45,7 @@ export default function HeroVoid() {
         <div className="hero-in hero-in-3 pointer-events-auto mt-6 flex flex-wrap gap-3">
           <Link
             href="/planets"
-            className="rounded border border-telemetry/50 bg-telemetry/10 px-4 py-2 font-mono text-xs uppercase tracking-widest text-telemetry transition hover:bg-telemetry/20"
+            className="glow-pulse rounded border border-telemetry/50 bg-telemetry/10 px-4 py-2 font-mono text-xs uppercase tracking-widest text-telemetry transition hover:bg-telemetry/25 hover:shadow-[0_0_28px_-4px_rgba(255,179,92,0.5)]"
           >
             Explore the worlds →
           </Link>

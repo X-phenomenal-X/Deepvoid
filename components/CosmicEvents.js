@@ -50,7 +50,7 @@ export default function CosmicEvents() {
     <div>
       {/* countdown banner to the next major event */}
       {nextMajor && (
-        <div className="sheen mb-6 flex flex-wrap items-center justify-between gap-4 rounded-xl border border-telemetry/30 bg-panel/80 px-6 py-5 backdrop-blur">
+        <div className="sheen glow-pulse mb-6 flex flex-wrap items-center justify-between gap-4 rounded-xl border border-telemetry/30 bg-panel/80 px-6 py-5 backdrop-blur">
           <div>
             <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-telemetry">
               Next major event · {fmt(nextMajor.date, nextMajor.end)}

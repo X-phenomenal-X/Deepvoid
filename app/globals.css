@@ -2,7 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; color-scheme: dark; }
+
+/* ---------- premium foundations ---------- */
+::selection { background: rgba(255, 179, 92, 0.3); color: #EDF2FA; }
+
+* { scrollbar-width: thin; scrollbar-color: #283452 transparent; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #05070D; }
+::-webkit-scrollbar-thumb { background: #283452; border-radius: 8px; border: 2px solid #05070D; }
+::-webkit-scrollbar-thumb:hover { background: #3A4A6E; }
+
+button:not(:disabled) { transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s, border-color 0.25s, color 0.25s, box-shadow 0.25s; }
+button:not(:disabled):active { transform: scale(0.96); }
+
+input, textarea { transition: border-color 0.25s, box-shadow 0.25s; }
+input:focus, textarea:focus { box-shadow: 0 0 0 3px rgba(255, 179, 92, 0.12); }
+
+/* film grain — the quiet thing that makes dark UIs feel expensive */
+.grain {
+  position: fixed; inset: 0; z-index: 80; pointer-events: none;
+  opacity: 0.05; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* scroll progress bar */
+.scroll-progress {
+  position: fixed; top: 0; left: 0; height: 2px; z-index: 90;
+  background: linear-gradient(90deg, #5CC8FF, #FFB35C);
+  box-shadow: 0 0 12px rgba(255, 179, 92, 0.5);
+  transform-origin: left;
+  width: 100%;
+}
+
+/* pulsing glow for hero CTAs / countdown shells */
+.glow-pulse { animation: glowPulse 3.2s ease-in-out infinite; }
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 179, 92, 0.0); }
+  50%      { box-shadow: 0 0 24px -4px rgba(255, 179, 92, 0.35); }
+}
 
 /* ---------- page transition ---------- */
 .page-fade { animation: pageFade 0.45s cubic-bezier(0.16, 1, 0.3, 1); }
@@ -11,14 +49,16 @@ html { scroll-behavior: smooth; }
   to { opacity: 1; transform: none; }
 }
 
-/* ---------- scroll reveal ---------- */
+/* ---------- scroll reveal — slight blur-to-sharp for a cinematic settle ---------- */
 .reveal {
   opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(22px) scale(0.985);
+  filter: blur(5px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.reveal.is-revealed { opacity: 1; transform: none; }
+.reveal.is-revealed { opacity: 1; transform: none; filter: none; }
 
 /* ---------- hero load-in stagger ---------- */
 @keyframes heroIn {
@@ -140,12 +180,18 @@ html { scroll-behavior: smooth; }
   to   { transform: translate(4vw, 3vw) scale(1.12); }
 }
 
-/* ---------- gradient headline accent ---------- */
+/* ---------- gradient headline accent — slowly breathing ---------- */
 .text-gradient {
-  background: linear-gradient(100deg, #5CC8FF 0%, #9BB8FF 45%, #FFB35C 100%);
+  background: linear-gradient(100deg, #5CC8FF 0%, #9BB8FF 35%, #FFB35C 65%, #5CC8FF 100%);
+  background-size: 220% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  animation: gradientDrift 9s ease-in-out infinite;
+}
+@keyframes gradientDrift {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
 }
 
 /* ---------- panel surface: subtle top sheen ---------- */
@@ -190,8 +236,8 @@ html { scroll-behavior: smooth; }
 /* ---------- accessibility: respect reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .reveal, .hero-in, .page-fade { opacity: 1 !important; transform: none !important; animation: none !important; transition: none !important; }
-  .live-dot, .voyager-pulse, .scroll-cue { animation: none; }
+  .reveal, .hero-in, .page-fade { opacity: 1 !important; transform: none !important; filter: none !important; animation: none !important; transition: none !important; }
+  .live-dot, .voyager-pulse, .scroll-cue, .glow-pulse, .text-gradient { animation: none; }
   .card-lift, .card-lift:hover, .card-glow, .card-glow:hover { transform: none; transition: none; }
   .nebula-a, .nebula-b, .nebula-c { animation: none; }
   .toast-in, .planet-detail { animation: none; }

@@ -30,7 +30,7 @@ export default function EclipseCountdown() {
   return (
     <div className="flex gap-3 sm:gap-5">
       {cells.map(([v, label]) => (
-        <div key={label} className="sheen min-w-[72px] rounded-xl border border-telemetry/30 bg-panel/80 px-4 py-3 text-center backdrop-blur sm:min-w-[96px]">
+        <div key={label} className="sheen glow-pulse min-w-[72px] rounded-xl border border-telemetry/30 bg-panel/80 px-4 py-3 text-center backdrop-blur sm:min-w-[96px]">
           <p className="odometer font-mono text-3xl tabular-nums text-telemetry sm:text-5xl">{String(v).padStart(2, "0")}</p>
           <p className="mt-1 font-mono text-[10px] uppercase tracking-widest text-dim">{label}</p>
         </div>

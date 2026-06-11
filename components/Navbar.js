@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const links = [
   { href: "/planets", label: "Planets" },
@@ -13,17 +14,35 @@ const links = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-50 border-b border-hairline bg-void/80 backdrop-blur">
+    <header
+      className={`sticky top-0 z-50 border-b backdrop-blur transition-all duration-300 ${
+        scrolled ? "border-hairline bg-void/90 shadow-[0_8px_30px_-12px_rgba(0,0,0,0.8)]" : "border-transparent bg-void/40"
+      }`}
+    >
       <nav className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-8">
-        <Link href="/" className="font-display text-lg tracking-tight text-starlight">
-          deep<span className="text-telemetry">void</span>
+        <Link href="/" className="group font-display text-lg tracking-tight text-starlight">
+          deep<span className="text-telemetry transition group-hover:[text-shadow:0_0_14px_rgba(255,179,92,0.7)]">void</span>
         </Link>
 
         {/* desktop */}
         <div className="hidden items-center gap-5 text-sm text-dim md:flex">
           {links.map((l) => (
-            <Link key={l.href} href={l.href} className="nav-link transition hover:text-starlight">
+            <Link
+              key={l.href}
+              href={l.href}
+              className={`nav-link transition hover:text-starlight ${pathname === l.href ? "text-telemetry" : ""}`}
+            >
               {l.label}
             </Link>
           ))}
