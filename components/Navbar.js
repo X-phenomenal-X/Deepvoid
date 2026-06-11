@@ -4,6 +4,7 @@ const links = [
   { href: "/planets", label: "Planets" },
   { href: "/missions", label: "Missions" },
   { href: "/exoplanets", label: "Exoplanets" },
+  { href: "/#events", label: "Sky events" },
   { href: "/blog", label: "Dispatches" }
 ];
 

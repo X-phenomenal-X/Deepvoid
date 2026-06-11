@@ -4,6 +4,7 @@ import ApodCard from "@/components/ApodCard";
 import LaunchCountdown from "@/components/LaunchCountdown";
 import IssTracker from "@/components/IssTracker";
 import AsteroidWatch from "@/components/AsteroidWatch";
+import CosmicEvents from "@/components/CosmicEvents";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import AdSlot from "@/components/AdSlot";
 import ScaleSlider from "@/components/ScaleSlider";
@@ -32,6 +33,19 @@ export default function Home() {
       <Reveal><IssTracker /></Reveal>
 
       <Reveal><AsteroidWatch /></Reveal>
+
+      {/* Cosmic calendar */}
+      <Reveal>
+        <section id="events">
+          <p className="font-mono text-xs uppercase tracking-[0.25em] text-telemetry">Cosmic calendar · 2026</p>
+          <h2 className="mt-3 font-hero text-2xl font-medium leading-snug sm:text-3xl">The sky has a schedule</h2>
+          <p className="mt-2 max-w-2xl text-sm text-dim">
+            Eclipses, meteor showers, oppositions — what already happened this year, and exactly
+            how long until what&apos;s next. The total solar eclipse over Europe is the one to plan for.
+          </p>
+          <div className="mt-8"><CosmicEvents /></div>
+        </section>
+      </Reveal>
 
       {/* Scale of the Void — the interactive */}
       <Reveal>

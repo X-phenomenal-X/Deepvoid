@@ -20,9 +20,16 @@ export const metadata = {
   description:
     "Live Voyager distance trackers, NASA imagery, launch countdowns, an interactive solar system, and a searchable exoplanet database.",
   openGraph: {
-    title: "DeepVoid",
-    description: "Live data from humanity's deepest space missions.",
-    type: "website"
+    title: "DeepVoid — the deep void, in real time",
+    description: "Live solar system, Voyager telemetry, asteroid close approaches, eclipse countdowns, and 5,000+ exoplanets.",
+    type: "website",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "DeepVoid — live solar system" }]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "DeepVoid — the deep void, in real time",
+    description: "Live solar system, Voyager telemetry, asteroid watch, eclipse countdowns.",
+    images: ["/og.png"]
   }
 };
 
