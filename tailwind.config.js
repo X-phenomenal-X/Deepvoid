@@ -5,10 +5,10 @@ module.exports = {
     extend: {
       colors: {
         void: "#05070D",        // page background — deep blue-black, not pure black
-        panel: "#0B0F1A",       // card surfaces
-        hairline: "#1C2436",    // borders
-        starlight: "#E8EDF5",   // primary text
-        dim: "#8B96AB",         // secondary text
+        panel: "#0D1424",       // card surfaces — lifted so panels read against the void
+        hairline: "#283452",    // borders — visible, defines the cards
+        starlight: "#EDF2FA",   // primary text
+        dim: "#9AA8C4",         // secondary text — higher contrast
         telemetry: "#FFB35C",   // amber accent — mission-control console amber
         signal: "#5CC8FF"       // cool blue for links/data highlights
       },

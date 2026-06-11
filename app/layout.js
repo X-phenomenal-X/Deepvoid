@@ -32,10 +32,11 @@ export default function RootLayout({ children }) {
         <Starfield />
         <div className="nebula nebula-a" aria-hidden="true" />
         <div className="nebula nebula-b" aria-hidden="true" />
+        <div className="nebula nebula-c" aria-hidden="true" />
         <CometCursor />
         <AlienObserver />
         <Navbar />
-        <main className="mx-auto max-w-6xl px-4">{children}</main>
+        <main className="mx-auto max-w-7xl px-5 sm:px-8">{children}</main>
         <Footer />
       </body>
     </html>

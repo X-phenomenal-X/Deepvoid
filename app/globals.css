@@ -111,21 +111,39 @@ html { scroll-behavior: smooth; }
 /* ---------- nebula glow layers ---------- */
 .nebula {
   position: fixed; border-radius: 9999px; pointer-events: none;
-  z-index: -10; filter: blur(70px); opacity: 0.5;
+  z-index: -10; filter: blur(70px); opacity: 0.65;
 }
 .nebula-a {
-  width: 55vw; height: 55vw; top: -20vw; right: -15vw;
-  background: radial-gradient(circle, rgba(92, 200, 255, 0.14), transparent 65%);
+  width: 60vw; height: 60vw; top: -20vw; right: -15vw;
+  background: radial-gradient(circle, rgba(92, 200, 255, 0.16), transparent 65%);
   animation: drift 46s ease-in-out infinite alternate;
 }
 .nebula-b {
-  width: 45vw; height: 45vw; bottom: -15vw; left: -12vw;
-  background: radial-gradient(circle, rgba(255, 179, 92, 0.10), transparent 65%);
+  width: 50vw; height: 50vw; bottom: -15vw; left: -12vw;
+  background: radial-gradient(circle, rgba(255, 179, 92, 0.12), transparent 65%);
   animation: drift 38s ease-in-out infinite alternate-reverse;
+}
+.nebula-c {
+  width: 70vw; height: 46vw; top: 28vh; left: 18vw;
+  background: radial-gradient(ellipse, rgba(120, 100, 220, 0.09), transparent 62%);
+  animation: drift 58s ease-in-out infinite alternate;
 }
 @keyframes drift {
   from { transform: translate(0, 0) scale(1); }
   to   { transform: translate(4vw, 3vw) scale(1.12); }
+}
+
+/* ---------- gradient headline accent ---------- */
+.text-gradient {
+  background: linear-gradient(100deg, #5CC8FF 0%, #9BB8FF 45%, #FFB35C 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---------- panel surface: subtle top sheen ---------- */
+.sheen {
+  background-image: linear-gradient(180deg, rgba(237, 242, 250, 0.045), rgba(237, 242, 250, 0) 120px);
 }
 
 /* ---------- UFO flyby ---------- */

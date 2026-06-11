@@ -1,14 +1,7 @@
-// Responsive ad placeholder. When you're approved for AdSense or Mediavine,
-// replace the inner div with the script they give you. Keeping fixed heights
-// now prevents layout shift later (good for SEO Core Web Vitals).
+// Ad slot — intentionally renders nothing until a real ad network (AdSense /
+// Mediavine) is approved. Empty dashed placeholder boxes make the site look
+// unfinished, so we hide them. When approved, swap `return null` for the
+// network's script/snippet and restore a fixed height to avoid layout shift.
 export default function AdSlot({ size = "banner" }) {
-  const heights = { banner: "h-24", box: "h-64" };
-  return (
-    <div
-      className={`flex ${heights[size]} items-center justify-center rounded border border-dashed border-hairline text-[10px] font-mono uppercase tracking-widest text-dim/50`}
-      aria-hidden="true"
-    >
-      ad slot
-    </div>
-  );
+  return null;
 }
