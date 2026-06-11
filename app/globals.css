@@ -255,6 +255,16 @@ input:focus, textarea:focus { box-shadow: 0 0 0 3px rgba(255, 179, 92, 0.12); }
 
 :focus-visible { outline: 2px solid #FFB35C; outline-offset: 2px; }
 
+/* skip-to-content — invisible until keyboard-focused */
+.skip-link {
+  position: fixed; top: -48px; left: 16px; z-index: 100;
+  padding: 10px 16px; border-radius: 8px;
+  background: #FFB35C; color: #05070D;
+  font-size: 13px; font-weight: 600;
+  transition: top 0.2s;
+}
+.skip-link:focus { top: 12px; }
+
 /* ---------- accessibility: respect reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

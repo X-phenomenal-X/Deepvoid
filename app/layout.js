@@ -40,6 +40,19 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${display.variable} ${mono.variable} ${hero.variable}`}>
       <body className={`${body.className} bg-void text-starlight antialiased`}>
+        <a href="#main" className="skip-link">Skip to content</a>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "DeepVoid",
+              url: "https://deepvoid-woad.vercel.app",
+              description: "Live trackers for humanity's deepest space missions — real-time solar system, Voyager telemetry, asteroid close approaches, and eclipse countdowns."
+            })
+          }}
+        />
         <Starfield />
         <div className="nebula nebula-a" aria-hidden="true" />
         <div className="nebula nebula-b" aria-hidden="true" />
@@ -49,7 +62,7 @@ export default function RootLayout({ children }) {
         <CometCursor />
         <AlienObserver />
         <Navbar />
-        <main className="mx-auto max-w-7xl px-5 sm:px-8">{children}</main>
+        <main id="main" className="mx-auto max-w-7xl px-5 sm:px-8">{children}</main>
         <Footer />
       </body>
     </html>

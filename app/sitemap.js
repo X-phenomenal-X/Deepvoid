@@ -2,7 +2,7 @@ import { getAllPosts } from "@/lib/posts";
 
 export default function sitemap() {
   const base = "https://deepvoid-woad.vercel.app";
-  const staticPages = ["", "/solar-system", "/missions", "/exoplanets", "/blog", "/about", "/privacy"].map((p) => ({
+  const staticPages = ["", "/planets", "/solar-system", "/missions", "/exoplanets", "/eclipse", "/blog", "/about", "/privacy"].map((p) => ({
     url: `${base}${p}`,
     changeFrequency: "daily",
     priority: p === "" ? 1 : 0.7

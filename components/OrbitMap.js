@@ -228,7 +228,7 @@ export default function OrbitMap({ variant = "panel" }) {
     return (
       <div ref={wrapRef} className="absolute inset-0">
         <canvas ref={canvasRef} className="block h-full w-full" />
-        <div className="absolute bottom-16 right-5 z-10 flex flex-col items-end gap-2 sm:right-8">
+        <div className="absolute bottom-16 right-5 z-10 hidden flex-col items-end gap-2 sm:flex sm:right-8">
           <span className="font-mono text-xs text-telemetry">{dateStr}</span>
           {warpChips}
         </div>
