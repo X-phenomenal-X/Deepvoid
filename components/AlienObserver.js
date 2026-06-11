@@ -10,13 +10,30 @@ const MESSAGES = [
   "Observer detected. Current assessment of Earth: 'mostly harmless.'"
 ];
 
+// rank thresholds — persistent across visits
+const RANKS = [
+  [1, "First Contact"],
+  [3, "Field Researcher"],
+  [5, "Senior Xenologist"],
+  [10, "They know you by name"],
+  [25, "Honorary Crew Member"]
+];
+
+function rankFor(n) {
+  let r = null;
+  for (const [min, label] of RANKS) if (n >= min) r = label;
+  return r;
+}
+
 export default function AlienObserver() {
   const [ufo, setUfo] = useState(null);     // { top, dur, flip }
   const [toast, setToast] = useState(null);
-  const sightings = useRef(0);
+  const [count, setCount] = useState(0);
   const timer = useRef(null);
 
   useEffect(() => {
+    try { setCount(Number(localStorage.getItem("dv-sightings") || 0)); } catch {}
+
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduced) return;
 
@@ -39,13 +56,21 @@ export default function AlienObserver() {
   }, []);
 
   function spotted() {
-    sightings.current += 1;
+    const n = count + 1;
+    setCount(n);
+    try { localStorage.setItem("dv-sightings", String(n)); } catch {}
     setUfo(null);
+    const rank = rankFor(n);
+    const newRank = RANKS.some(([min]) => min === n);
     setToast(
-      `${MESSAGES[Math.floor(Math.random() * MESSAGES.length)]} (Sightings: ${sightings.current})`
+      newRank
+        ? `RANK EARNED: ${rank}. ${MESSAGES[Math.floor(Math.random() * MESSAGES.length)]}`
+        : `${MESSAGES[Math.floor(Math.random() * MESSAGES.length)]}`
     );
     setTimeout(() => setToast(null), 6000);
   }
+
+  const rank = rankFor(count);
 
   return (
     <>
@@ -69,9 +94,21 @@ export default function AlienObserver() {
           </svg>
         </button>
       )}
+
+      {/* persistent sighting badge — appears after first catch */}
+      {count > 0 && !toast && (
+        <div
+          className="fixed bottom-4 right-4 z-40 rounded-full border border-signal/30 bg-panel/80 px-3 py-1.5 font-mono text-[10px] uppercase tracking-wider text-dim backdrop-blur"
+          title={rank ? `Rank: ${rank}` : undefined}
+        >
+          🛸 {count} sighting{count === 1 ? "" : "s"}{rank ? ` · ${rank}` : ""}
+        </div>
+      )}
+
       {toast && (
         <div className="toast-in fixed bottom-6 left-1/2 z-50 w-[min(92vw,28rem)] -translate-x-1/2 rounded-lg border border-signal/40 bg-panel/95 px-5 py-4 font-mono text-xs leading-relaxed text-starlight shadow-2xl backdrop-blur">
           <span className="mr-2 text-signal">▲ ANOMALY</span>{toast}
+          <span className="mt-2 block text-dim">Total sightings: {count}{rank ? ` · ${rank}` : ""}</span>
         </div>
       )}
     </>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { EVENTS, EVENT_TYPES } from "@/lib/events";
 
 // treat event dates as ending at 23:59 UTC so an event still counts as
@@ -56,6 +57,11 @@ export default function CosmicEvents() {
             </p>
             <p className="mt-1 font-hero text-lg font-medium text-starlight sm:text-2xl">{nextMajor.title}</p>
             <p className="mt-1 font-mono text-xs text-dim">{nextMajor.where}</p>
+            {nextMajor.major && (
+              <Link href="/eclipse" className="mt-2 inline-block font-mono text-xs text-signal hover:underline">
+                Full eclipse guide & countdown →
+              </Link>
+            )}
           </div>
           <p className="font-mono text-2xl text-telemetry sm:text-4xl">
             <Countdown to={startMs(nextMajor)} />
