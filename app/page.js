@@ -5,6 +5,7 @@ import IssTracker from "@/components/IssTracker";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import AdSlot from "@/components/AdSlot";
 import ScaleSlider from "@/components/ScaleSlider";
+import OrbitMap from "@/components/OrbitMap";
 import Reveal from "@/components/Reveal";
 import Link from "next/link";
 
@@ -24,6 +25,19 @@ export default function Home() {
           <VoyagerTracker />
         </div>
       </section>
+
+      {/* Live solar system */}
+      <Reveal>
+        <section>
+          <p className="font-mono text-xs uppercase tracking-[0.25em] text-telemetry">Live orbit map</p>
+          <h2 className="mt-3 font-display text-3xl tracking-tight">The solar system, right now</h2>
+          <p className="mt-2 max-w-2xl text-sm text-dim">
+            Every planet drawn at its real position for this exact moment — computed from JPL orbital
+            elements. Crank the time warp to watch decades pass.
+          </p>
+          <div className="mt-6"><OrbitMap /></div>
+        </section>
+      </Reveal>
 
       <Reveal><IssTracker /></Reveal>
 
